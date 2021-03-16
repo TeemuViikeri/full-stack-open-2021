@@ -1,0 +1,18 @@
+title 0.6: uusi muistiinpano
+
+note over selain:
+lomakkeen lähetystapahtuman tapahtumankäsittelijä
+alustaa uuden muistiinpanon JSON-formaattiin,
+uudelleenpiirtää muistiinpanot (redrawNotes()) ja
+lähettää uuden muistiinpanon palvelimelle HTTP POST
+-pyyntönä: xhttpForPost.open('POST', '/new_note_spa', true)
+end note
+
+selain->palvelin: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+palvelin-->selain: 201 Created. {"message":"note created"}
+
+note over selain: 
+HUOM: tällä kertaa statuskoodi on 201,
+joten uudelleenohjausta ei suoriteta.
+Vastausviesti palvelimelta tulostetaan konsoliin.
+end note

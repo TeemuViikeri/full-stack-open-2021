@@ -1,0 +1,37 @@
+title 0.5 Single Page App
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+palvelin-->selain: 200 OK: palautetaan HTML-koodi
+
+note over selain: 
+HTML-koodissa tullaan link-elementin kohdalle,
+joka luo yhteyden HTML-dokumentin ja ulkoisen
+lähteen välille: tyylittelydokumentti löytyy
+osoitteesta "/exampleapp/main.css"
+end note
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+palvelin-->selain: main.css
+
+note over selain: 
+HTML-koodissa tullaan script-elementin kohdalle,
+joka yhdistää JavaScript-ohjelmakoodia HTML-dokumenttiin:
+ohjelmakoodin tiedosto löytyy osoitteesta "/exampleapp/spa.js"
+end note
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+palvelin-->selain: main.js
+
+note over selain:
+selain alkaa suorittaa js-koodia
+joka pyytää JSON-datan palvelimelta:
+xhttp.open("GET", "/exampleapp/data.json", true)
+end note
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+palvelin-->selain: [{ "content":"eae","date":"2021-03-15T22:50:15.748Z" }, ...]
+
+note over selain:
+selain suorittaa tapahtumankäsittelijän,
+joka renderöi muistiinpanot näytölle
+end note
