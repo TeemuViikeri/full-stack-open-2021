@@ -19,8 +19,9 @@ const App = () => {
       .then((initialNumbers) => {
         setPersons(initialNumbers)
       })
-      .catch(() => {
-        setNotificationMessage('There was an error fetching data')
+      .catch((error) => {
+        const message = error.response.data.message
+        setNotificationMessage(message)
         setIsOperationSuccessful(false)
       })
       .finally(() => {
@@ -61,8 +62,9 @@ const App = () => {
             setNotificationMessage(`Updated ${updatedNumberInResponse.name}`)
             setIsOperationSuccessful(true)
           })
-          .catch(() => {
-            setNotificationMessage('Updating was not successful')
+          .catch((error) => {
+            const message = error.response.data.message
+            setNotificationMessage(message)
             setIsOperationSuccessful(false)
           })
           .finally(() => {
@@ -81,8 +83,9 @@ const App = () => {
           setNotificationMessage(`Added ${createdNumberInResponse.name}`)
           setIsOperationSuccessful(true)
         })
-        .catch(() => {
-          setNotificationMessage(`${newName} couldn't be added`)
+        .catch((error) => {
+          const message = error.response.data.message
+          setNotificationMessage(message)
           setIsOperationSuccessful(false)
         })
         .finally(() => {
@@ -113,8 +116,9 @@ const App = () => {
           setNotificationMessage(`Deleted ${name}`)
           setIsOperationSuccessful(true)
         })
-        .catch(() => {
-          setNotificationMessage(`${name} has already been removed from server`)
+        .catch((error) => {
+          const message = error.response.data.message
+          setNotificationMessage(message)
           setIsOperationSuccessful(false)
         })
         .finally(() => {
