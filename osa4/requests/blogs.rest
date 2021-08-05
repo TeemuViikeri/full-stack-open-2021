@@ -1,0 +1,24 @@
+GET http://localhost:3003/api/blogs/
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlcGF2aSIsImlkIjoiNjEwYjAwOGU4NGFjZDIwYmMwNDYzYTYwIiwiaWF0IjoxNjI4MTExMDQwLCJleHAiOjE2MjgxMTQ2NDB9.Hiwpzcup9mTr24JGn9BkJaX9a27ki2WIi7brFOvr9kU
+###
+
+POST http://localhost:3003/api/blogs/
+content-type: application/json
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlcGF2aSIsImlkIjoiNjEwYWMwNzQzMDkxOGMzYWMwYWZiMGQ2IiwiaWF0IjoxNjI4MDk0NTg2fQ.udOWIBcCBONzzPK4gecttLt_pKuRtAbc7rSHyjZhP7M
+
+{
+	"title": "The Keyword",
+  "author": "Google",
+  "url": "https://blog.google/",
+  "likes": 0,
+  "user": "610ac07430918c3ac0afb0d6"
+}
+
+###
+
+DELETE http://localhost:3003/api/blogs/610ae72beed6a53f967800e3
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlcGF2aSIsImlkIjoiNjEwYjAwOGU4NGFjZDIwYmMwNDYzYTYwIiwiaWF0IjoxNjI4MTExMDQwLCJleHAiOjE2MjgxMTQ2NDB9.Hiwpzcup9mTr24JGn9BkJaX9a27ki2WIi7brFOvr9kU
+
+###
+
+DELETE http://localhost:3003/api/blogs/
