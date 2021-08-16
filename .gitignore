@@ -108,3 +108,6 @@ dist
 
 # Example course project
 notes/
+
+# HTTP requests
+requests/
