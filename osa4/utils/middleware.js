@@ -41,9 +41,7 @@ const tokenExtractor = (request, response, next) => {
   if (auth && auth.toLowerCase().startsWith('bearer ')) {
     request.token = auth.substring(7)
   } else {
-    return response
-      .status(401)
-      .json({ error: 'Authorization failed: use bearer token' })
+    return next()
   }
 
   next()

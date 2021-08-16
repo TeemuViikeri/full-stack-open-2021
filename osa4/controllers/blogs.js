@@ -3,6 +3,7 @@ const router = require('express').Router()
 // Import Blog model
 const Blog = require('../models/blog')
 const User = require('../models/user')
+const userExtractor = require('../utils/middleware').userExtractor
 
 // Returns all blogs in database
 router.get('/', async (request, response) => {
@@ -11,10 +12,12 @@ router.get('/', async (request, response) => {
 })
 
 // Saves a new blog to database
-router.post('/', async (request, response) => {
+router.post('/', userExtractor, async (request, response) => {
   const body = request.body
 
   const user = await User.findById(request.user.id)
+
+  console.log(user)
 
   if (!body.title || !body.url) {
     return response.status(400).end()
@@ -22,6 +25,10 @@ router.post('/', async (request, response) => {
 
   if (!body.likes) {
     body.likes = 0
+  }
+
+  if (!body.user) {
+    body.user = user._id
   }
 
   const blog = new Blog(body)
@@ -34,7 +41,7 @@ router.post('/', async (request, response) => {
 })
 
 // Deletes a blog from database
-router.delete('/:id', async (request, response) => {
+router.delete('/:id', userExtractor, async (request, response) => {
   const blog = await Blog.findById(request.params.id)
 
   const user = request.user
@@ -49,6 +56,8 @@ router.delete('/:id', async (request, response) => {
 
 // Edit a blog in database
 router.put('/:id', async (request, response) => {
+  console.log(request.body)
+
   const newBlog = await Blog.findByIdAndUpdate(
     request.params.id,
     request.body,

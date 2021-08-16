@@ -26,6 +26,8 @@ router.post('/', async (request, response) => {
     id: user._id,
   }
 
+  console.log(t)
+
   // Create and sign a JWT with a secret key
   const token = jwt.sign(t, process.env.SECRET_KEY, {
     expiresIn: 60 * 60,
